@@ -39,8 +39,7 @@ steps:
   - name: do the deed
     image: node
     commands:
-      - export HOME=/Users/powerminion
-      - export HOMEPATH=/Users/powerminion
+      - yarn
       - npx rnv export -p android -s playstore -c selectorcanary --ci
 # ---
 # kind: pipeline
