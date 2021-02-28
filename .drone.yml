@@ -2,32 +2,6 @@ trigger:
   branch:
     - develop
 
-# ---
-# kind: pipeline
-# type: exec
-# name: ios
-
-# platform:
-#   os: darwin
-
-# steps:
-#   # - name: yarn
-#   #   commands:
-#   #     - export HOME=/Users/powerminion
-#   #     - export HOMEPATH=/Users/powerminion
-#   #     - yarn
-#   - name: do the deed
-#     commands:
-#       - export HOME=/Users/powerminion
-#       - export HOMEPATH=/Users/powerminion
-#       - yarn webrtc:setup
-#       - npx rnv export -p ios -s appstore -c selectorcanary --ci
-# node:
-#   runner: powerminion
-
-# depends_on:
-#   - yarncache
-# ---
 kind: pipeline
 type: docker
 name: android
@@ -49,7 +23,7 @@ steps:
         - "vendor"
     volumes:
       - name: cache
-        path: /tmp/cache
+        path: /usr/local/share/.cache
   - name: do the deed
     image: webratio/nodejs-with-android-sdk:12.13.1
     commands:
@@ -69,81 +43,9 @@ steps:
         - "vendor"
     volumes:
       - name: cache
-        path: /tmp/cache
+        path: /usr/local/share/.cache
 
 volumes:
   - name: cache
     host:
       path: /tmp/cache
-# ---
-# kind: pipeline
-# type: exec
-# name: web
-
-# platform:
-#   os: darwin
-
-# steps:
-#   # - name: yarn
-#   #   commands:
-#   #     - export HOME=/Users/powerminion
-#   #     - export HOMEPATH=/Users/powerminion
-#   #     - yarn
-#   - name: do the deed
-#     commands:
-#       - export HOME=/Users/powerminion
-#       - export HOMEPATH=/Users/powerminion
-#       - npx rnv export -p web -c selector --ci
-# node:
-#   runner: powerminion
-
-# depends_on:
-#   - yarncache
-# ---
-# kind: pipeline
-# type: exec
-# name: androidtv
-
-# platform:
-#   os: darwin
-
-# steps:
-#   # - name: yarn
-#   #   commands:
-#   #     - export HOME=/Users/powerminion
-#   #     - export HOMEPATH=/Users/powerminion
-#   #     - yarn
-#   - name: do the deed
-#     commands:
-#       - export HOME=/Users/powerminion
-#       - export HOMEPATH=/Users/powerminion
-#       - npx rnv export -p androidtv -s playstore -c selectorcanary --ci
-# node:
-#   runner: powerminion
-
-# depends_on:
-#   - yarncache
-# ---
-# kind: pipeline
-# type: exec
-# name: macos
-
-# platform:
-#   os: darwin
-
-# steps:
-#   # - name: yarn
-#   #   commands:
-#   #     - export HOME=/Users/powerminion
-#   #     - export HOMEPATH=/Users/powerminion
-#   #     - yarn
-#   - name: do the deed
-#     commands:
-#       - export HOME=/Users/powerminion
-#       - export HOMEPATH=/Users/powerminion
-#       - npx rnv export -p macos -s appstore -c selectorcanary --ci
-# node:
-#   runner: powerminion
-
-# depends_on:
-#   - yarncache
