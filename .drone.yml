@@ -39,6 +39,7 @@ steps:
   - name: do the deed
     image: webratio/nodejs-with-android-sdk:12.13.1
     commands:
+      - npm install -g yarn
       - yarn
       - npx rnv export -p android -s playstore -c selectorcanary --ci
 # ---
