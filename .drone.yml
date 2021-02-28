@@ -1,7 +1,6 @@
 trigger:
-  ref:
-    - refs/heads/master
-    - refs/tags/*
+  branch:
+    - develop
 
 # ---
 # kind: pipeline
