@@ -42,7 +42,7 @@ steps:
     settings:
       backend: "filesystem"
       restore: true
-      cache_key: 'yarn-{{ checksum "go.mod" }}'
+      cache_key: 'yarn-{{ checksum "yarn.lock" }}'
       archive_format: "gzip"
       # filesystem_cache_root: "/tmp/cache"
       mount:
@@ -62,7 +62,7 @@ steps:
     settings:
       backend: "filesystem"
       rebuild: true
-      cache_key: 'yarn-{{ checksum "go.mod" }}'
+      cache_key: 'yarn-{{ checksum "yarn.lock" }}'
       archive_format: "gzip"
       # filesystem_cache_root: "/tmp/cache"
       mount:
