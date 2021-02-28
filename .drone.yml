@@ -20,7 +20,7 @@ steps:
       archive_format: "gzip"
       # filesystem_cache_root: "/tmp/cache"
       mount:
-        - "cache"
+        - "node_modules"
     volumes:
       - name: cache
         path: /tmp/cache
@@ -40,7 +40,7 @@ steps:
       archive_format: "gzip"
       # filesystem_cache_root: "/tmp/cache"
       mount:
-        - "cache"
+        - "node_modules"
     volumes:
       - name: cache
         path: /tmp/cache
@@ -48,4 +48,4 @@ steps:
 volumes:
   - name: cache
     host:
-      path: /usr/local/share/.cache
+      path: /tmp/cache
