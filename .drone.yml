@@ -49,7 +49,7 @@ steps:
         - "vendor"
     volumes:
       - name: cache
-        path: /tmp
+        path: /tmp/cache
   - name: do the deed
     image: webratio/nodejs-with-android-sdk:12.13.1
     commands:
@@ -68,7 +68,12 @@ steps:
         - "vendor"
     volumes:
       - name: cache
-        path: /tmp
+        path: /tmp/cache
+
+volumes:
+  - name: cache
+    host:
+      path: /tmp/cache
 # ---
 # kind: pipeline
 # type: exec
