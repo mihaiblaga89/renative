@@ -1,0 +1,117 @@
+trigger:
+  ref:
+    - refs/heads/master
+    - refs/tags/*
+
+# ---
+# kind: pipeline
+# type: exec
+# name: ios
+
+# platform:
+#   os: darwin
+
+# steps:
+#   # - name: yarn
+#   #   commands:
+#   #     - export HOME=/Users/powerminion
+#   #     - export HOMEPATH=/Users/powerminion
+#   #     - yarn
+#   - name: do the deed
+#     commands:
+#       - export HOME=/Users/powerminion
+#       - export HOMEPATH=/Users/powerminion
+#       - yarn webrtc:setup
+#       - npx rnv export -p ios -s appstore -c selectorcanary --ci
+# node:
+#   runner: powerminion
+
+# depends_on:
+#   - yarncache
+# ---
+kind: pipeline
+type: docker
+name: android
+
+platform:
+  os: linux
+
+steps:
+  - name: do the deed
+    image: node
+    commands:
+      - export HOME=/Users/powerminion
+      - export HOMEPATH=/Users/powerminion
+      - npx rnv export -p android -s playstore -c selectorcanary --ci
+# ---
+# kind: pipeline
+# type: exec
+# name: web
+
+# platform:
+#   os: darwin
+
+# steps:
+#   # - name: yarn
+#   #   commands:
+#   #     - export HOME=/Users/powerminion
+#   #     - export HOMEPATH=/Users/powerminion
+#   #     - yarn
+#   - name: do the deed
+#     commands:
+#       - export HOME=/Users/powerminion
+#       - export HOMEPATH=/Users/powerminion
+#       - npx rnv export -p web -c selector --ci
+# node:
+#   runner: powerminion
+
+# depends_on:
+#   - yarncache
+# ---
+# kind: pipeline
+# type: exec
+# name: androidtv
+
+# platform:
+#   os: darwin
+
+# steps:
+#   # - name: yarn
+#   #   commands:
+#   #     - export HOME=/Users/powerminion
+#   #     - export HOMEPATH=/Users/powerminion
+#   #     - yarn
+#   - name: do the deed
+#     commands:
+#       - export HOME=/Users/powerminion
+#       - export HOMEPATH=/Users/powerminion
+#       - npx rnv export -p androidtv -s playstore -c selectorcanary --ci
+# node:
+#   runner: powerminion
+
+# depends_on:
+#   - yarncache
+# ---
+# kind: pipeline
+# type: exec
+# name: macos
+
+# platform:
+#   os: darwin
+
+# steps:
+#   # - name: yarn
+#   #   commands:
+#   #     - export HOME=/Users/powerminion
+#   #     - export HOMEPATH=/Users/powerminion
+#   #     - yarn
+#   - name: do the deed
+#     commands:
+#       - export HOME=/Users/powerminion
+#       - export HOMEPATH=/Users/powerminion
+#       - npx rnv export -p macos -s appstore -c selectorcanary --ci
+# node:
+#   runner: powerminion
+
+# depends_on:
+#   - yarncache
