@@ -37,7 +37,7 @@ platform:
 
 steps:
   - name: do the deed
-    image: node
+    image: webratio/nodejs-with-android-sdk:12.13.1
     commands:
       - yarn
       - npx rnv export -p android -s playstore -c selectorcanary --ci
