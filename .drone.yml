@@ -30,7 +30,7 @@ steps:
       - npm install -g yarn
       - yarn
       - yarn bootstrap
-      - npx rnv build -p web -s release
+      - cd packages/app && npx rnv build -p web -s release
   - name: rebuild-cache-with-filesystem
     image: meltwater/drone-cache:dev
     pull: "if-not-exists"
