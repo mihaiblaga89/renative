@@ -29,7 +29,7 @@ steps:
     commands:
       - npm install -g yarn
       - yarn
-      - yarn cache dir
+      - rnv build -p web -s release
   - name: rebuild-cache-with-filesystem
     image: meltwater/drone-cache:dev
     pull: "if-not-exists"
