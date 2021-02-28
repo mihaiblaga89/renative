@@ -36,12 +36,39 @@ platform:
   os: linux
 
 steps:
+  - name: restore-cache-with-filesystem
+    image: meltwater/drone-cache:dev
+    pull: "if-not-exists"
+    settings:
+      backend: "filesystem"
+      restore: true
+      cache_key: 'yarn-{{ checksum "go.mod" }}'
+      archive_format: "gzip"
+      # filesystem_cache_root: "/tmp/cache"
+      mount:
+        - "vendor"
+    volumes:
+      - name: cache
+        path: /tmp/cache
   - name: do the deed
     image: webratio/nodejs-with-android-sdk:12.13.1
     commands:
       - npm install -g yarn
       - yarn
-      - npx rnv export -p android -s playstore -c selectorcanary --ci
+  - name: rebuild-cache-with-filesystem
+    image: meltwater/drone-cache:dev
+    pull: "if-not-exists"
+    settings:
+      backend: "filesystem"
+      rebuild: true
+      cache_key: 'yarn-{{ checksum "go.mod" }}'
+      archive_format: "gzip"
+      # filesystem_cache_root: "/tmp/cache"
+      mount:
+        - "vendor"
+    volumes:
+      - name: cache
+        path: /tmp/cache
 # ---
 # kind: pipeline
 # type: exec
