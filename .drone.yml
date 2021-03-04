@@ -18,16 +18,16 @@ steps:
       restore: true
       cache_key: 'yarn-{{ checksum "yarn.lock" }}'
       archive_format: "gzip"
-      # filesystem_cache_root: "/tmp/cache "
+      # filesystem_cache_root: "/tmp/cache"
       mount:
         - "node_modules"
     volumes:
       - name: cache
         path: /tmp/cache
   - name: do the deed
-    image: webratio/nodejs-with-android-sdk:12.13.1
+    # image: webratio/nodejs-with-android-sdk:12.13.1
+    image: node
     commands:
-      - npm install -g yarn
       - yarn
       - yarn bootstrap
       - cd packages/app && npx rnv build -p web -s release
